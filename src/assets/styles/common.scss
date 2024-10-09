@@ -1,0 +1,22 @@
+*, * > *{
+  box-sizing: border-box;
+  }
+  * {
+		&::-webkit-scrollbar {
+			width: 0;
+		}
+		scrollbar-width: none;
+}
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  img{
+    max-width: 100%;
+  }
+
+  .svg{
+    width: 100%;
+  }
