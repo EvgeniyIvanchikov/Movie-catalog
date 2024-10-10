@@ -1,7 +1,7 @@
 <script setup>
-import { isOpen } from '@/assets/scripts/utils/index.js';
+import { isOpen } from '@/assets/scripts/index.js';
 import MyIcon from '@/assets/icons/project-logo.svg';
-import Input from '@/components/Input.vue'
+import SearchForm from '@/modules/SearchForm.vue'
 import Burger from '@/components/Burger.vue'
 import AccountInfo from '@/components/AccountInfo.vue'
 
@@ -17,7 +17,7 @@ import AccountInfo from '@/components/AccountInfo.vue'
             <a href="/" class="logo-link">
             <MyIcon class="logo" />
             </a>  
-            <Input :type="'search'" :placeholder="'Search'"/>
+            <SearchForm />
             <AccountInfo/>
           </div>
         </div>
@@ -41,15 +41,12 @@ import AccountInfo from '@/components/AccountInfo.vue'
   z-index: 5;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  margin-top: -6.5rem;
-  background: var(--palette-1--tone-400);
+  background: linear-gradient(-45deg, var(--palette-1--tone-700), var(--palette-1--tone-300));
 
   @media screen and (max-width: 991px) {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    order: -1;
     margin-top: 0;
-    margin-bottom: -6.5rem;
   }
 }
 .logo-link{
@@ -89,7 +86,7 @@ import AccountInfo from '@/components/AccountInfo.vue'
     z-index: 1;
     height: 100vh;
     width: 100vw;
-    background-color: #000;
+    background-color: var(--palette-1--tone-400);
     transform: translateX(-100%);
   }
 }

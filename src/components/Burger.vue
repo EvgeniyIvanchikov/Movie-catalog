@@ -1,5 +1,5 @@
 <script setup>
-import { isOpen, toggleLock } from '@/assets/scripts/utils/index.js';
+import { isOpen, toggleLock } from '@/assets/scripts/index.js';
 
 defineProps({
   class: String,

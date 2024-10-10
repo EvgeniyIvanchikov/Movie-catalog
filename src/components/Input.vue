@@ -2,9 +2,15 @@
 import { ref } from 'vue'
 
 defineProps({
-  placeholder: String,
+  modelValue: String,    // Это значение, которое будет синхронизироваться с v-model
   type: String,
-})
+  placeholder: String
+});
+
+const emit = defineEmits(['update:modelValue']);  // Определяем событие для обновления значения
+const updateValue = (event) => {
+  emit('update:modelValue', event.target.value);  // Сообщаем родительскому компоненту об изменении
+};
 
 </script>
 
@@ -12,7 +18,10 @@ defineProps({
   <input
   :type='type'
   :placeholder='placeholder'
-  class="input"
+  
+  :value="modelValue"  
+    @input="updateValue"
+    class="input"
   >
 </template>
 
