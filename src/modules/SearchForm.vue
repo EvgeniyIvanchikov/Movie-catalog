@@ -13,7 +13,6 @@ const searchMovies = (event) => {
 <template>
   <form class="form" @submit="searchMovies">
     <p>Current searchInput value: {{ globalState.searchInput }}</p>
-
     <Input 
       :type="'search'"
       :placeholder="'Enter movie name'" 
