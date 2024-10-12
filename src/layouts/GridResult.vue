@@ -1,47 +1,74 @@
 <script setup>
-import MovieCard from '@/components/MovieCard.vue'
+import MovieCard from '@/components/MovieCard.vue';
+import Pagination from '@/modules/Pagination.vue';
+import { globalState } from '@/assets/scripts';
 
 </script>
- 
+
 <template>
-  
-  <div class="section result">
+  <section class="section result">
     <div class="container result__container">
-      <div class="result__header">You searched for:</div>
+      <div v-if='globalState.movies.totalResults' class="heading heading--l">Number of search results: {{ globalState.movies.totalResults }}</div>
+      <div class="result__error-message-box">
+        <div 
+        v-if='globalState.searchErrorMessage && !globalState.movies.list.length' 
+        class="heading heading--m">
+        Error message: {{globalState.searchErrorMessage}}
+      </div>
+      </div>
+      <div 
+      v-if='!globalState.movies.list.length'
+      class="result__cta-message-box">
+        <div 
+        class="heading heading--l">Find your favorite movies</div>
+        <div class="paragraph paragraph-m">Just enter your query in the search bar and submit the form</div>
+      </div>
       <div class="result__main">
-        <div class="result__error-message-box">This is some error</div>
-        <div class="result__cta-message-box">This is CTA</div>
-        <div class="result__grid">
-          <MovieCard /> 
-          <MovieCard />  
-          <MovieCard /> 
+        <div 
+        v-if='globalState.movies.list.length'
+        class="result__grid">
+          <MovieCard 
+          v-for="movieData in globalState.movies.list"
+          :key="movieData.imdbID"
+          :data='movieData'
+          />
         </div>
       </div>
-      <div class="result__pagination">Pagination</div>
-</div>
-</div>
+      <div
+      v-if='globalState.movies.totalResults > 10'
+      class="result__pagination">
+        <Pagination />
+    </div>
+    </div>
+  </section>
 </template>
 
-
 <style scoped lang="scss">
-.result{
+.result {
   position: relative;
   margin-bottom: auto;
   padding: 6.25rem 0;
 
-  &__container{
+  &__container {
     display: flex;
     flex-direction: column;
     gap: 3rem;
   }
-  &__main{
+  &__main {
     width: 100%;
   }
-  &__grid{
+  &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
   }
+  &__cta-message-box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__pagination{
+    width: 100%;
+  }
 }
-
 </style>

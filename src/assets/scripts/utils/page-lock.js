@@ -1,11 +1,17 @@
-import { ref } from 'vue';
+import { globalState } from '@/assets/scripts';
 
-export const isOpen = ref(false);
-
+export const lockScroll = () => {
+  globalState.isScrollLocked = true;
+  document.body.style.overflow = 'hidden';
+}
+export const unLockScroll = () => {
+  globalState.isScrollLocked = false;
+  document.body.style.overflow = 'auto';
+}
 export const toggleLock = () => {
-  if (isOpen.value) {
-    document.body.style.overflow = 'hidden';
+  if (globalState.isScrollLocked) {
+    lockScroll()
   } else {
-    document.body.style.overflow = 'auto';
+    unLockScroll()
   }
 };

@@ -1,15 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-
 defineProps({
-  modelValue: String,    // Это значение, которое будет синхронизироваться с v-model
+  modelValue: String,
   type: String,
   placeholder: String
 });
 
-const emit = defineEmits(['update:modelValue']);  // Определяем событие для обновления значения
+const emit = defineEmits(['update:modelValue']);
 const updateValue = (event) => {
-  emit('update:modelValue', event.target.value);  // Сообщаем родительскому компоненту об изменении
+  emit('update:modelValue', event.target.value);
 };
 
 </script>
@@ -18,10 +16,9 @@ const updateValue = (event) => {
   <input
   :type='type'
   :placeholder='placeholder'
-  
   :value="modelValue"  
-    @input="updateValue"
-    class="input"
+   @input="updateValue"
+  class="input"
   >
 </template>
 

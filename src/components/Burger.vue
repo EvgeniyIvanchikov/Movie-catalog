@@ -1,18 +1,10 @@
 <script setup>
-import { isOpen, toggleLock } from '@/assets/scripts/index.js';
+import { globalState, toggleMenu } from '@/assets/scripts/index.js';
 
-defineProps({
-  class: String,
-});
-
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
-  toggleLock();
-};
 </script>
 
 <template>
-  <button type="button" class="burger" :class="{ 'js--open': isOpen }" @click="toggleMenu">
+  <button type="button" class="burger" :class="{ 'js--open': globalState.isMenuOpen }" @click="toggleMenu">
     <div class="burger_line burger_line--top"></div>
     <div class="burger_line burger_line--bottom"></div>
   </button>

@@ -1,24 +1,80 @@
 <script setup>
-import { globalState, API } from '@/assets/scripts';
+import { globalState, requestMovies } from '@/assets/scripts';
 import Input from '@/components/Input.vue';
 import Button from '@/components/Button.vue';
 
+const isValidInput = (searchValue) => {
+  if (searchValue.trim()) {
+    return true;
+  } else {
+    globalState.validationErrorMessage = 'This is a required field';
+    return false;
+  }
+}
+
 const searchMovies = (event) => {
   event.preventDefault();
-  const searchValue = globalState.searchInput;
-  const searchAddress = `${API.ROOT}?apikey=${API.KEY}&s=${searchValue}`;
-  console.log(searchValue, searchAddress);};
+  if (!isValidInput(globalState.searchInputValue)) return;
+
+  const searchValue = globalState.searchInputValue;
+  globalState.movies.page = 1;
+  globalState.movies.requestName = searchValue;
+  requestMovies({s:searchValue, page: 1});
+  };
 </script>
 
 <template>
   <form class="form" @submit="searchMovies">
-    <p>Current searchInput value: {{ globalState.searchInput }}</p>
-    <Input 
-      :type="'search'"
+    <div class="form__group">
+      <Input 
+      class='form__input'
+      :type="'search'" 
       :placeholder="'Enter movie name'" 
-      v-model="globalState.searchInput"
-    />
-    
-    <Button type="submit" :message="'Search'" />
+      v-model="globalState.searchInputValue" 
+      @input='globalState.validationErrorMessage = ""'
+      
+      />
+      <Button       
+      class='form__button'
+      type="submit" 
+      :disabled="globalState.isSearchButtonDisabled"
+      :message="'Search'" />
+    </div>
+    <div v-if='globalState.validationErrorMessage' class="form__group form__group--error">
+      <div class="paragraph paragraph--l">
+        {{ globalState.validationErrorMessage }}
+      </div>
+    </div>
+
   </form>
 </template>
+
+
+<style scoped lang="scss">
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+
+  &__group {
+    width: 100%;
+    display: flex;
+
+    &--error {
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      color: var(--palette-2--tone-100);
+    }
+  }
+  &__input {
+    width: 100%;
+  }
+  &__button {
+    position: relative;
+  }
+}
+</style>

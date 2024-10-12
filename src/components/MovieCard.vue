@@ -1,28 +1,66 @@
 <script setup>
+
+defineProps({
+  data: Object,
+});
 </script>
 
 <template>
   <a href="/" class="card">
     <div class="card__image-wrapper">
-      <img src="/images/clapperboard.svg" alt="" class="card__image card__image--placeholder">
-      <!-- <img src="/images/clapperboard.svg" alt="" class="card__image"> -->
+      <img
+      v-if='!data.Poster || data.Poster === "N/A"'
+      src="/images/clapperboard.svg" alt="" class="card__image card__image--placeholder">
+      <img v-else :src=data.Poster alt="" class="card__image card__image--main">
     </div>
     <div class="card__content">
       <div class="card__content-group">
-        <div class="card__position-name">Name:</div>
-        <div class="card__position-value">Value</div>
+        <div class="card__position-name">
+          <div class="paragraph paragraph--l">
+            Name:
+          </div>
+        </div>
+        <div class="card__position-value">
+            <div class="paragraph paragraph--l">
+              {{data.Title}}      
+            </div>
+        </div>
       </div>
       <div class="card__content-group">
-        <div class="card__position-name">Year:</div>
-        <div class="card__position-value">Value</div>
+        <div class="card__position-name">
+          <div class="paragraph paragraph--l">
+            Year:
+          </div>
+        </div>
+        <div class="card__position-value">
+            <div class="paragraph paragraph--l">
+              {{data.Year}}      
+            </div>
+        </div>
       </div>
       <div class="card__content-group">
-        <div class="card__position-name">imdbID:</div>
-        <div class="card__position-value">Value</div>
+        <div class="card__position-name">
+          <div class="paragraph paragraph--l">
+            imdbID:
+          </div>
+        </div>
+        <div class="card__position-value">
+            <div class="paragraph paragraph--l">
+              {{data.imdbID}}      
+            </div>
+        </div>
       </div>
       <div class="card__content-group">
-        <div class="card__position-name">Type:</div>
-        <div class="card__position-value">Value</div>
+        <div class="card__position-name">
+          <div class="paragraph paragraph--l">
+            Type:
+          </div>
+        </div>
+        <div class="card__position-value">
+            <div class="paragraph paragraph--l">
+              {{data.Type}}      
+            </div>
+        </div>
       </div>
     </div>
     
@@ -47,7 +85,8 @@
 
   &__image-wrapper{
     width: 100%;
-    aspect-ratio: 1.5/1;
+    position: relative;
+    aspect-ratio: 1/1.3;
     background: var(--palette-1--tone-100);
     border-radius: 10px;
     overflow: hidden;
@@ -67,14 +106,29 @@
       object-fit: contain;
       filter: drop-shadow(0px 0px 2px black);
     }
+    &--main{
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
   }
   &__content{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
 
     &-group{
-      display: flex;
+      display: grid;
+    grid-template-columns: 60px auto;
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--palette-1--tone-400);
+    width: 100%;
+    &:last-of-type{
+      border:none;
+    }
     }
   }
 }

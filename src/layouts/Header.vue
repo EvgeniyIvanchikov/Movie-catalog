@@ -1,39 +1,39 @@
 <script setup>
-import { isOpen } from '@/assets/scripts/index.js';
+import { globalState } from '@/assets/scripts';
 import MyIcon from '@/assets/icons/project-logo.svg';
-import SearchForm from '@/modules/SearchForm.vue'
-import Burger from '@/components/Burger.vue'
-import AccountInfo from '@/components/AccountInfo.vue'
-
+import SearchForm from '@/modules/SearchForm.vue';
+import Burger from '@/components/Burger.vue';
+import AccountInfo from '@/components/AccountInfo.vue';
 </script>
- 
+
 <template>
-  
-  <div class="section header">
+  <header class="section header">
     <div class="container header_container">
-      <div class="navigation-wrapper" :class="{ 'js--open': isOpen }">
+      <div class="header__navigation-wrapper" :class="{ 'js--open': globalState.isMenuOpen }">
+        <AccountInfo v-if="globalState.isMobile" />
         <div class="navigation">
-          <div class="navigation__inner">
-            <a href="/" class="logo-link">
-            <MyIcon class="logo" />
-            </a>  
-            <SearchForm />
-            <AccountInfo/>
+          <div class="navigation__layout">
+            <div class="navigation__layout-item">
+              <a href="/" class="logo-link">
+                <MyIcon class="logo" />
+              </a>
+            </div>
+            <div class="navigation__layout-item">
+              <SearchForm />
+              <AccountInfo v-if="!globalState.isMobile" />
+            </div>
           </div>
         </div>
-        <div class="navigation-controls">
+        <div class="navigation__controls">
           <Burger />
         </div>
       </div>
-</div>
-
-
-</div>
+    </div>
+  </header>
 </template>
 
-
 <style scoped lang="scss">
-.header{
+.header {
   position: sticky;
   overflow: visible;
   top: 0;
@@ -48,36 +48,30 @@ import AccountInfo from '@/components/AccountInfo.vue'
     padding-bottom: 1rem;
     margin-top: 0;
   }
-}
-.logo-link{
-  width: 12rem;
-  max-width: 100%;
-}
-.navigation-wrapper{
-  width: 100%;
-  &.js--open{
-    .navigation{
-      transform: translateX(0);
+  &__navigation-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.js--open {
+      .navigation {
+        transform: translateX(0);
+      }
     }
   }
 }
-.navigation-controls{
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  display: none;
-  gap: 2rem;
-
-  @media screen and (max-width: 991px) {
-    display: flex;
-  }
+.logo-link {
+  width: 12rem;
+  max-width: 100%;
 }
-.navigation{
+
+.navigation {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  
+
   @media screen and (max-width: 991px) {
     transition: transform var(--transition-duration) var(--transition-timing-function);
     position: fixed;
@@ -89,19 +83,37 @@ import AccountInfo from '@/components/AccountInfo.vue'
     background-color: var(--palette-1--tone-400);
     transform: translateX(-100%);
   }
-}
-.navigation__inner{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: 991px) {
+
+  &__layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 1.25rem;
+    @media screen and (max-width: 991px) {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      padding: 7rem 0;
+      height: 100%;
+      overflow: auto;
+    }
+    &-item{
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      width: 100%;
+    }
+  }
+  &__controls {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
     gap: 2rem;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 7rem 0;
-    height: 100%;
-    overflow: auto;
+
+    @media screen and (max-width: 991px) {
+      display: flex;
+    }
   }
 }
 </style>

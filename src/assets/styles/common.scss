@@ -13,6 +13,10 @@
     text-decoration: inherit;
   }
 
+  button:not([disabled]){
+    cursor: pointer;
+  }
+
   img{
     max-width: 100%;
   }
