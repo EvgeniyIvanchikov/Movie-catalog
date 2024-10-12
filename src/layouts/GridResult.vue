@@ -8,7 +8,7 @@ import { globalState } from '@/assets/scripts';
 <template>
   <section data-role='section-result' class="section result">
     <div class="container result__container">
-      <div v-if='globalState.movies.totalResults' class="heading heading--l">Number of search results: {{ globalState.movies.totalResults }}</div>
+      <div v-if='globalState.movies.totalResults' class="heading heading--l">You searched for: "{{ globalState.movies.requestName }}", {{ globalState.movies.totalResults }} results found</div>
       <div class="result__error-message-box">
         <div 
         v-if='globalState.searchErrorMessage && !globalState.movies.list.length' 
