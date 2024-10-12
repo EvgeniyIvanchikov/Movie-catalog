@@ -30,7 +30,7 @@ defineProps({
   min-height: 4rem;
   transition: all 0.3s ease;
   border: none;
-  background: var(--palette-1--tone-200);
+  background: var(--palette-1--tone-100);
 
   &[disabled] {
     background: var(--palette-1--tone-500);
