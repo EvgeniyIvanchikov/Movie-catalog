@@ -8,13 +8,22 @@ import GridResult from "./layouts/GridResult.vue";
 import Footer from "./layouts/Footer.vue";
 
 onMounted(() => {
-  const toggleIsMobileVariable = () =>{
-    const checkWindowWidth = () =>{
+  let lastWidth = window.innerWidth;
+
+  const toggleIsMobileVariable = () => {
+    const checkWindowWidth = () => {
+      const currentWidth = window.innerWidth;
+
       const isMobile = window.matchMedia("(max-width: 991px)").matches;
       globalState.isMobile = isMobile;
 
       if (isMobile) {
-        closeMenu();
+        if (currentWidth !== lastWidth) {
+          console.log(currentWidth, lastWidth);
+          
+          lastWidth = currentWidth;
+          closeMenu();
+        }
       }
 
     }

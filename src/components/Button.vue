@@ -29,6 +29,8 @@ defineProps({
   max-width: 100%;
   min-height: 4rem;
   transition: all 0.3s ease;
+  border: none;
+  background: var(--palette-1--tone-200);
 
   &[disabled] {
     background: var(--palette-1--tone-500);

@@ -24,6 +24,7 @@ import IconArrowDown from '@/assets/icons/arrow-down.svg';
 .account-info {
   max-width: 12.5rem;
   overflow: hidden;
+  color: var(--primary-text-color);
 
 
   &__button {

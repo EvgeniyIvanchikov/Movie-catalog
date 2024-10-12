@@ -61,9 +61,9 @@ const searchMovies = (event) => {
   &__group {
     width: 100%;
     display: flex;
+    gap: 4px;
     @media screen and (max-width: 479px) {
         flex-direction: column;
-        gap: 4px;
     }
 
     &--error {

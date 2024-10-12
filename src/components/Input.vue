@@ -33,6 +33,7 @@ const updateValue = (event) => {
     padding: 1rem 1.5rem;
     max-width: 100%;
     min-height: 4rem;
+    border: none;
 }
 
 </style>
