@@ -10,7 +10,7 @@ import AccountInfo from '@/components/AccountInfo.vue';
   <header class="section header">
     <div class="container header_container">
       <div class="header__navigation-wrapper" :class="{ 'js--open': globalState.isMenuOpen }">
-        <AccountInfo v-if="globalState.isMobile" />
+        <AccountInfo v-if="globalState.isMobile" class='header__account-info' />
         <div class="navigation">
           <div class="navigation__layout">
             <div class="navigation__layout-item">
@@ -20,7 +20,7 @@ import AccountInfo from '@/components/AccountInfo.vue';
             </div>
             <div class="navigation__layout-item">
               <SearchForm />
-              <AccountInfo v-if="!globalState.isMobile" />
+              <AccountInfo v-if="!globalState.isMobile" class='header__account-info'/>
             </div>
           </div>
         </div>
@@ -47,6 +47,10 @@ import AccountInfo from '@/components/AccountInfo.vue';
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 0;
+  }
+  &__account-info{
+    position: relative;
+    z-index: 3;
   }
   &__navigation-wrapper {
     width: 100%;

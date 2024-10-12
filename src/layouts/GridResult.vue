@@ -21,7 +21,12 @@ import { globalState } from '@/assets/scripts';
       class="result__cta-message-box">
         <div 
         class="heading heading--l">Find your favorite movies</div>
-        <div class="paragraph paragraph-m">Just enter your query in the search bar and submit the form</div>
+        <div class="paragraph paragraph-m">
+          Just enter your query in the search bar and submit the form. 
+        <template v-if="globalState.isMobile">
+          (Click on the open menu button to see the form)
+        </template>
+        </div>
       </div>
       <div class="result__main">
         <div 
