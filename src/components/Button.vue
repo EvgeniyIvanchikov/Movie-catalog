@@ -38,10 +38,9 @@ defineProps({
   }
   &.pagination__button{
     @media screen and (max-width: 767px) {
-      min-height: none;
+      min-height: auto;
       div{
         font-size: 1rem ;
-
       }
         }
     }

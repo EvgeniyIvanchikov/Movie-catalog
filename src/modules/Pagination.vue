@@ -83,7 +83,7 @@ const searchMovies = (event) => {
     gap: 1rem;
     width: 100%;
     @media screen and (max-width: 479px) {
-            gap: 0.5rem;
+            gap: 0.25rem;
     }
   }
 
@@ -93,7 +93,7 @@ const searchMovies = (event) => {
             padding: 0.875rem;
     }
     @media screen and (max-width: 479px) {
-            padding: 0.5rem;
+            padding: 0.65rem;
     }
     &--ellipsis{
       pointer-events: none;
