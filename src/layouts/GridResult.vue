@@ -6,7 +6,7 @@ import { globalState } from '@/assets/scripts';
 </script>
 
 <template>
-  <section class="section result">
+  <section data-role='section-result' class="section result">
     <div class="container result__container">
       <div v-if='globalState.movies.totalResults' class="heading heading--l">Number of search results: {{ globalState.movies.totalResults }}</div>
       <div class="result__error-message-box">
@@ -61,6 +61,13 @@ import { globalState } from '@/assets/scripts';
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
+    @media screen and (max-width: 991px) {
+      grid-template-columns: 1fr 1fr;      
+      gap: 1rem;
+    }
+    @media screen and (max-width: 479px) {
+      grid-template-columns: 1fr;      
+    }
   }
   &__cta-message-box{
     display: flex;

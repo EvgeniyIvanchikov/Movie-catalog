@@ -1,15 +1,15 @@
 <script setup>
-import { globalState } from '@/assets/scripts';
 
 defineProps({
   type: String,
-  message: String
+  message: String,
+  class: String,
 });
 
 </script>
 
 <template>
-  <button :type="type" class="button">
+  <button :type="type" class="button" :class='class'>
     <div class="paragraph paragraph--xl">
       {{message}}
     </div>
@@ -34,5 +34,14 @@ defineProps({
     background: var(--palette-1--tone-500);
     color: var(--palette-1--tone-100);
   }
+  &.pagination__button{
+    @media screen and (max-width: 767px) {
+      min-height: none;
+      div{
+        font-size: 1rem ;
+
+      }
+        }
+    }
 }
 </style>

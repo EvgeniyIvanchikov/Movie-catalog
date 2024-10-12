@@ -92,10 +92,12 @@ import AccountInfo from '@/components/AccountInfo.vue';
     gap: 1.25rem;
     @media screen and (max-width: 991px) {
       gap: 2rem;
-      grid-template-columns: 1fr;
-      padding: 7rem 0;
-      height: 100%;
-      overflow: auto;
+    padding: 7rem 1.5rem;
+    height: 100%;
+    overflow: auto;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
     }
     &-item{
       display: flex;
@@ -105,7 +107,7 @@ import AccountInfo from '@/components/AccountInfo.vue';
     }
   }
   &__controls {
-    width: 100%;
+    width: auto;
     justify-content: space-between;
     align-items: center;
     display: none;

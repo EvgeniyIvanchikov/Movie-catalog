@@ -34,10 +34,12 @@ import IconArrowDown from '@/assets/icons/arrow-down.svg';
     border: none;
     border-radius: 6px;
     gap: 1.25rem;
+    padding: 0 1rem;
   }
   &__name-wrapper {
     display: flex;
     align-items: center;
+    gap: 1rem;
   }
   &__photo-wrapper{
     position: relative;

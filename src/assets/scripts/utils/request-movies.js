@@ -1,15 +1,18 @@
-import { globalState, API } from '@/assets/scripts';
+import { globalState, API, closeMenu } from '@/assets/scripts';
 
 export const requestMovies = (getParameters) => {
   let defaultErrorMessage = 'Server error. Try requesting the data again';
-
+  const sectionResult = document.querySelector('[data-role="section-result"]');
   const searchURL = new URL(API.ROOT);
+  // if (sectionResult) sectionResult.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
 
   searchURL.searchParams.append('apikey', API.KEY);
   Object.entries(getParameters).forEach(([key, value]) => {
     searchURL.searchParams.append(key, value);
   })
 
+  closeMenu()
   globalState.isSearchButtonDisabled = true;
   fetch(searchURL.href)
     .then((response) => {

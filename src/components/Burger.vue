@@ -27,6 +27,7 @@ import { globalState, toggleMenu } from '@/assets/scripts/index.js';
   margin-left: auto;
   cursor: pointer;
   overflow: hidden;
+  border: none;
 
   .burger_line{
     position: absolute;

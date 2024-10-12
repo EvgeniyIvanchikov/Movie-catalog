@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <a href="/" class="card">
+  <div href="/" class="card">
     <div class="card__image-wrapper">
       <img
       v-if='!data.Poster || data.Poster === "N/A"'
@@ -64,7 +64,7 @@ defineProps({
       </div>
     </div>
     
-  </a>
+  </div>
 </template>
 
 <style scoped lang="scss">

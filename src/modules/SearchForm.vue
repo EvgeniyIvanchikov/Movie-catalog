@@ -16,7 +16,7 @@ const searchMovies = (event) => {
   event.preventDefault();
   if (!isValidInput(globalState.searchInputValue)) return;
 
-  const searchValue = globalState.searchInputValue;
+  const searchValue = globalState.searchInputValue.trim();
   globalState.movies.page = 1;
   globalState.movies.requestName = searchValue;
   requestMovies({s:searchValue, page: 1});
@@ -61,6 +61,10 @@ const searchMovies = (event) => {
   &__group {
     width: 100%;
     display: flex;
+    @media screen and (max-width: 479px) {
+        flex-direction: column;
+        gap: 4px;
+    }
 
     &--error {
       position: absolute;
@@ -68,6 +72,10 @@ const searchMovies = (event) => {
       top: 100%;
       left: 0;
       color: var(--palette-2--tone-100);
+      @media screen and (max-width: 991px) {
+        color: var(--palette-2--tone-200);
+        top: calc(100% + 1rem);
+    }
     }
   }
   &__input {
