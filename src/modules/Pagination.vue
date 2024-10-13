@@ -19,10 +19,14 @@ const arrayOfPaginationButtons = computed(() => {
   let deleteNumber;
   switch (indexOfActiveItem) {
     case 0:
-      deleteNumber = array.length - 4;
-      array.splice(3, deleteNumber, '...');
+      deleteNumber = array.length - 3;
+      array.splice(2, deleteNumber, '...');
       break;
     case 1:
+      deleteNumber = array.length -4;
+      array.splice(3, deleteNumber, '...');
+      break;
+    case 2:
       deleteNumber = array.length -5;
       array.splice(4, deleteNumber, '...');
       break;
