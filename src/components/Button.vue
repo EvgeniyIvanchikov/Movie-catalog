@@ -33,7 +33,7 @@ defineProps({
   background: var(--palette-1--tone-100);
 
   &[disabled] {
-    background: var(--palette-1--tone-500);
+    background: var(--palette-1--tone-900);
     color: var(--palette-1--tone-100);
   }
   &.pagination__button{
